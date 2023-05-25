@@ -10,6 +10,11 @@
         "internalType": "uint8",
         "name": "_minimumBucketDepth",
         "type": "uint8"
+      },
+      {
+        "internalType": "address",
+        "name": "multisig",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
@@ -125,6 +130,25 @@
       }
     ],
     "name": "Paused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "recipient",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "totalAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "PotWithdrawn",
     "type": "event"
   },
   {
@@ -284,6 +308,120 @@
     "inputs": [
       {
         "internalType": "bytes32",
+        "name": "_batchId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "batchBucketDepth",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "_batchId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "batchDepth",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "_batchId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "batchImmutableFlag",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "_batchId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "batchLastUpdatedBlockNumber",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "_batchId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "batchNormalisedBalance",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "_batchId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "batchOwner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
         "name": "",
         "type": "bytes32"
       }
@@ -301,6 +439,11 @@
         "type": "uint8"
       },
       {
+        "internalType": "uint8",
+        "name": "bucketDepth",
+        "type": "uint8"
+      },
+      {
         "internalType": "bool",
         "name": "immutableFlag",
         "type": "bool"
@@ -308,6 +451,11 @@
       {
         "internalType": "uint256",
         "name": "normalisedBalance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "lastUpdatedBlockNumber",
         "type": "uint256"
       }
     ],
@@ -411,19 +559,6 @@
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "empty",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -549,6 +684,19 @@
   },
   {
     "inputs": [],
+    "name": "isBatchesTreeEmpty",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "lastExpiryBalance",
     "outputs": [
       {
@@ -594,6 +742,32 @@
         "internalType": "uint8",
         "name": "",
         "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "minimumInitialBalancePerChunk",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "minimumValidityBlocks",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -691,6 +865,19 @@
     "inputs": [
       {
         "internalType": "uint256",
+        "name": "_value",
+        "type": "uint256"
+      }
+    ],
+    "name": "setMinimumValidityBlocks",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
         "name": "_price",
         "type": "uint256"
       }
@@ -733,19 +920,6 @@
       }
     ],
     "name": "topUp",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "topupPot",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

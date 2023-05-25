@@ -15,10 +15,28 @@
         "internalType": "address",
         "name": "oracleContract",
         "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "multisig",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
     "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "validChunkCount",
+        "type": "uint256"
+      }
+    ],
+    "name": "ChunkCount",
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -63,6 +81,25 @@
       }
     ],
     "name": "CountReveals",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "roundNumber",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "anchor",
+        "type": "bytes32"
+      }
+    ],
+    "name": "CurrentRevealAnchor",
     "type": "event"
   },
   {
@@ -291,7 +328,7 @@
     "name": "OracleContract",
     "outputs": [
       {
-        "internalType": "contract PriceOracle",
+        "internalType": "contract IPriceOracle",
         "name": "",
         "type": "address"
       }
@@ -317,7 +354,7 @@
     "name": "PostageContract",
     "outputs": [
       {
-        "internalType": "contract PostageStamp",
+        "internalType": "contract IPostageStamp",
         "name": "",
         "type": "address"
       }
@@ -330,7 +367,7 @@
     "name": "Stakes",
     "outputs": [
       {
-        "internalType": "contract StakeRegistry",
+        "internalType": "contract IStakeRegistry",
         "name": "",
         "type": "address"
       }
@@ -898,6 +935,24 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_penaltyMultiplierDisagreement",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_penaltyMultiplierNonRevealed",
+        "type": "uint256"
+      }
+    ],
+    "name": "setFreezingParams",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

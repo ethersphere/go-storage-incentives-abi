@@ -10,6 +10,11 @@
         "internalType": "uint64",
         "name": "_NetworkId",
         "type": "uint64"
+      },
+      {
+        "internalType": "address",
+        "name": "multisig",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",

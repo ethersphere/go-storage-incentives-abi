@@ -26,11 +26,12 @@ var (
 	_ = common.Big1
 	_ = types.BloomLookup
 	_ = event.NewSubscription
+	_ = abi.ConvertType
 )
 
 // PostagestampMetaData contains all meta data concerning the Postagestamp contract.
 var PostagestampMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_bzzToken\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"_minimumBucketDepth\",\"type\":\"uint8\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"batchId\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"totalAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"normalisedBalance\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"depth\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"bucketDepth\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"immutableFlag\",\"type\":\"bool\"}],\"name\":\"BatchCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"batchId\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"newDepth\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"normalisedBalance\",\"type\":\"uint256\"}],\"name\":\"BatchDepthIncrease\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"batchId\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"topupAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"normalisedBalance\",\"type\":\"uint256\"}],\"name\":\"BatchTopUp\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Paused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"PriceUpdate\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"previousAdminRole\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"newAdminRole\",\"type\":\"bytes32\"}],\"name\":\"RoleAdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleRevoked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Unpaused\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"DEFAULT_ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"PAUSER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"PRICE_ORACLE_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"REDISTRIBUTOR_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"batches\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"depth\",\"type\":\"uint8\"},{\"internalType\":\"bool\",\"name\":\"immutableFlag\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"normalisedBalance\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"bzzToken\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_initialBalancePerChunk\",\"type\":\"uint256\"},{\"internalType\":\"uint8\",\"name\":\"_depth\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"_bucketDepth\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"},{\"internalType\":\"bool\",\"name\":\"_immutable\",\"type\":\"bool\"}],\"name\":\"copyBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_initialBalancePerChunk\",\"type\":\"uint256\"},{\"internalType\":\"uint8\",\"name\":\"_depth\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"_bucketDepth\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"_nonce\",\"type\":\"bytes32\"},{\"internalType\":\"bool\",\"name\":\"_immutable\",\"type\":\"bool\"}],\"name\":\"createBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"currentTotalOutPayment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"empty\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"limit\",\"type\":\"uint256\"}],\"name\":\"expireLimited\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"expiredBatchesExist\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"firstBatchId\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleAdmin\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"grantRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"hasRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"},{\"internalType\":\"uint8\",\"name\":\"_newDepth\",\"type\":\"uint8\"}],\"name\":\"increaseDepth\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lastExpiryBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lastPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lastUpdatedBlock\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"minimumBucketDepth\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pot\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"}],\"name\":\"remainingBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"renounceRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"revokeRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"}],\"name\":\"setPrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"_topupAmountPerChunk\",\"type\":\"uint256\"}],\"name\":\"topUp\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"topupPot\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalPot\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"unPause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"validChunkCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_bzzToken\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"_minimumBucketDepth\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"multisig\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"batchId\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"totalAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"normalisedBalance\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"depth\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"bucketDepth\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"immutableFlag\",\"type\":\"bool\"}],\"name\":\"BatchCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"batchId\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"newDepth\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"normalisedBalance\",\"type\":\"uint256\"}],\"name\":\"BatchDepthIncrease\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"batchId\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"topupAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"normalisedBalance\",\"type\":\"uint256\"}],\"name\":\"BatchTopUp\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Paused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"totalAmount\",\"type\":\"uint256\"}],\"name\":\"PotWithdrawn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"PriceUpdate\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"previousAdminRole\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"newAdminRole\",\"type\":\"bytes32\"}],\"name\":\"RoleAdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleRevoked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Unpaused\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"DEFAULT_ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"PAUSER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"PRICE_ORACLE_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"REDISTRIBUTOR_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"}],\"name\":\"batchBucketDepth\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"}],\"name\":\"batchDepth\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"}],\"name\":\"batchImmutableFlag\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"}],\"name\":\"batchLastUpdatedBlockNumber\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"}],\"name\":\"batchNormalisedBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"}],\"name\":\"batchOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"batches\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"depth\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"bucketDepth\",\"type\":\"uint8\"},{\"internalType\":\"bool\",\"name\":\"immutableFlag\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"normalisedBalance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"lastUpdatedBlockNumber\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"bzzToken\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_initialBalancePerChunk\",\"type\":\"uint256\"},{\"internalType\":\"uint8\",\"name\":\"_depth\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"_bucketDepth\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"},{\"internalType\":\"bool\",\"name\":\"_immutable\",\"type\":\"bool\"}],\"name\":\"copyBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_initialBalancePerChunk\",\"type\":\"uint256\"},{\"internalType\":\"uint8\",\"name\":\"_depth\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"_bucketDepth\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"_nonce\",\"type\":\"bytes32\"},{\"internalType\":\"bool\",\"name\":\"_immutable\",\"type\":\"bool\"}],\"name\":\"createBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"currentTotalOutPayment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"limit\",\"type\":\"uint256\"}],\"name\":\"expireLimited\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"expiredBatchesExist\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"firstBatchId\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleAdmin\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"grantRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"hasRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"},{\"internalType\":\"uint8\",\"name\":\"_newDepth\",\"type\":\"uint8\"}],\"name\":\"increaseDepth\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isBatchesTreeEmpty\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lastExpiryBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lastPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lastUpdatedBlock\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"minimumBucketDepth\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"minimumInitialBalancePerChunk\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"minimumValidityBlocks\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pot\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"}],\"name\":\"remainingBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"renounceRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"revokeRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"setMinimumValidityBlocks\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"}],\"name\":\"setPrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_batchId\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"_topupAmountPerChunk\",\"type\":\"uint256\"}],\"name\":\"topUp\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalPot\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"unPause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"validChunkCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 // PostagestampABI is the input ABI used to generate the binding from.
@@ -134,11 +135,11 @@ func NewPostagestampFilterer(address common.Address, filterer bind.ContractFilte
 
 // bindPostagestamp binds a generic wrapper to an already deployed contract.
 func bindPostagestamp(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := abi.JSON(strings.NewReader(PostagestampABI))
+	parsed, err := PostagestampMetaData.GetAbi()
 	if err != nil {
 		return nil, err
 	}
-	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
+	return bind.NewBoundContract(address, *parsed, caller, transactor, filterer), nil
 }
 
 // Call invokes the (constant) contract method with params as input values and
@@ -303,23 +304,213 @@ func (_Postagestamp *PostagestampCallerSession) REDISTRIBUTORROLE() ([32]byte, e
 	return _Postagestamp.Contract.REDISTRIBUTORROLE(&_Postagestamp.CallOpts)
 }
 
+// BatchBucketDepth is a free data retrieval call binding the contract method 0x32ac57dd.
+//
+// Solidity: function batchBucketDepth(bytes32 _batchId) view returns(uint8)
+func (_Postagestamp *PostagestampCaller) BatchBucketDepth(opts *bind.CallOpts, _batchId [32]byte) (uint8, error) {
+	var out []interface{}
+	err := _Postagestamp.contract.Call(opts, &out, "batchBucketDepth", _batchId)
+
+	if err != nil {
+		return *new(uint8), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(uint8)).(*uint8)
+
+	return out0, err
+
+}
+
+// BatchBucketDepth is a free data retrieval call binding the contract method 0x32ac57dd.
+//
+// Solidity: function batchBucketDepth(bytes32 _batchId) view returns(uint8)
+func (_Postagestamp *PostagestampSession) BatchBucketDepth(_batchId [32]byte) (uint8, error) {
+	return _Postagestamp.Contract.BatchBucketDepth(&_Postagestamp.CallOpts, _batchId)
+}
+
+// BatchBucketDepth is a free data retrieval call binding the contract method 0x32ac57dd.
+//
+// Solidity: function batchBucketDepth(bytes32 _batchId) view returns(uint8)
+func (_Postagestamp *PostagestampCallerSession) BatchBucketDepth(_batchId [32]byte) (uint8, error) {
+	return _Postagestamp.Contract.BatchBucketDepth(&_Postagestamp.CallOpts, _batchId)
+}
+
+// BatchDepth is a free data retrieval call binding the contract method 0x44beae8e.
+//
+// Solidity: function batchDepth(bytes32 _batchId) view returns(uint8)
+func (_Postagestamp *PostagestampCaller) BatchDepth(opts *bind.CallOpts, _batchId [32]byte) (uint8, error) {
+	var out []interface{}
+	err := _Postagestamp.contract.Call(opts, &out, "batchDepth", _batchId)
+
+	if err != nil {
+		return *new(uint8), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(uint8)).(*uint8)
+
+	return out0, err
+
+}
+
+// BatchDepth is a free data retrieval call binding the contract method 0x44beae8e.
+//
+// Solidity: function batchDepth(bytes32 _batchId) view returns(uint8)
+func (_Postagestamp *PostagestampSession) BatchDepth(_batchId [32]byte) (uint8, error) {
+	return _Postagestamp.Contract.BatchDepth(&_Postagestamp.CallOpts, _batchId)
+}
+
+// BatchDepth is a free data retrieval call binding the contract method 0x44beae8e.
+//
+// Solidity: function batchDepth(bytes32 _batchId) view returns(uint8)
+func (_Postagestamp *PostagestampCallerSession) BatchDepth(_batchId [32]byte) (uint8, error) {
+	return _Postagestamp.Contract.BatchDepth(&_Postagestamp.CallOpts, _batchId)
+}
+
+// BatchImmutableFlag is a free data retrieval call binding the contract method 0xd968f44b.
+//
+// Solidity: function batchImmutableFlag(bytes32 _batchId) view returns(bool)
+func (_Postagestamp *PostagestampCaller) BatchImmutableFlag(opts *bind.CallOpts, _batchId [32]byte) (bool, error) {
+	var out []interface{}
+	err := _Postagestamp.contract.Call(opts, &out, "batchImmutableFlag", _batchId)
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
+}
+
+// BatchImmutableFlag is a free data retrieval call binding the contract method 0xd968f44b.
+//
+// Solidity: function batchImmutableFlag(bytes32 _batchId) view returns(bool)
+func (_Postagestamp *PostagestampSession) BatchImmutableFlag(_batchId [32]byte) (bool, error) {
+	return _Postagestamp.Contract.BatchImmutableFlag(&_Postagestamp.CallOpts, _batchId)
+}
+
+// BatchImmutableFlag is a free data retrieval call binding the contract method 0xd968f44b.
+//
+// Solidity: function batchImmutableFlag(bytes32 _batchId) view returns(bool)
+func (_Postagestamp *PostagestampCallerSession) BatchImmutableFlag(_batchId [32]byte) (bool, error) {
+	return _Postagestamp.Contract.BatchImmutableFlag(&_Postagestamp.CallOpts, _batchId)
+}
+
+// BatchLastUpdatedBlockNumber is a free data retrieval call binding the contract method 0x81e508b9.
+//
+// Solidity: function batchLastUpdatedBlockNumber(bytes32 _batchId) view returns(uint256)
+func (_Postagestamp *PostagestampCaller) BatchLastUpdatedBlockNumber(opts *bind.CallOpts, _batchId [32]byte) (*big.Int, error) {
+	var out []interface{}
+	err := _Postagestamp.contract.Call(opts, &out, "batchLastUpdatedBlockNumber", _batchId)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// BatchLastUpdatedBlockNumber is a free data retrieval call binding the contract method 0x81e508b9.
+//
+// Solidity: function batchLastUpdatedBlockNumber(bytes32 _batchId) view returns(uint256)
+func (_Postagestamp *PostagestampSession) BatchLastUpdatedBlockNumber(_batchId [32]byte) (*big.Int, error) {
+	return _Postagestamp.Contract.BatchLastUpdatedBlockNumber(&_Postagestamp.CallOpts, _batchId)
+}
+
+// BatchLastUpdatedBlockNumber is a free data retrieval call binding the contract method 0x81e508b9.
+//
+// Solidity: function batchLastUpdatedBlockNumber(bytes32 _batchId) view returns(uint256)
+func (_Postagestamp *PostagestampCallerSession) BatchLastUpdatedBlockNumber(_batchId [32]byte) (*big.Int, error) {
+	return _Postagestamp.Contract.BatchLastUpdatedBlockNumber(&_Postagestamp.CallOpts, _batchId)
+}
+
+// BatchNormalisedBalance is a free data retrieval call binding the contract method 0xdf674385.
+//
+// Solidity: function batchNormalisedBalance(bytes32 _batchId) view returns(uint256)
+func (_Postagestamp *PostagestampCaller) BatchNormalisedBalance(opts *bind.CallOpts, _batchId [32]byte) (*big.Int, error) {
+	var out []interface{}
+	err := _Postagestamp.contract.Call(opts, &out, "batchNormalisedBalance", _batchId)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// BatchNormalisedBalance is a free data retrieval call binding the contract method 0xdf674385.
+//
+// Solidity: function batchNormalisedBalance(bytes32 _batchId) view returns(uint256)
+func (_Postagestamp *PostagestampSession) BatchNormalisedBalance(_batchId [32]byte) (*big.Int, error) {
+	return _Postagestamp.Contract.BatchNormalisedBalance(&_Postagestamp.CallOpts, _batchId)
+}
+
+// BatchNormalisedBalance is a free data retrieval call binding the contract method 0xdf674385.
+//
+// Solidity: function batchNormalisedBalance(bytes32 _batchId) view returns(uint256)
+func (_Postagestamp *PostagestampCallerSession) BatchNormalisedBalance(_batchId [32]byte) (*big.Int, error) {
+	return _Postagestamp.Contract.BatchNormalisedBalance(&_Postagestamp.CallOpts, _batchId)
+}
+
+// BatchOwner is a free data retrieval call binding the contract method 0x2182ddb1.
+//
+// Solidity: function batchOwner(bytes32 _batchId) view returns(address)
+func (_Postagestamp *PostagestampCaller) BatchOwner(opts *bind.CallOpts, _batchId [32]byte) (common.Address, error) {
+	var out []interface{}
+	err := _Postagestamp.contract.Call(opts, &out, "batchOwner", _batchId)
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// BatchOwner is a free data retrieval call binding the contract method 0x2182ddb1.
+//
+// Solidity: function batchOwner(bytes32 _batchId) view returns(address)
+func (_Postagestamp *PostagestampSession) BatchOwner(_batchId [32]byte) (common.Address, error) {
+	return _Postagestamp.Contract.BatchOwner(&_Postagestamp.CallOpts, _batchId)
+}
+
+// BatchOwner is a free data retrieval call binding the contract method 0x2182ddb1.
+//
+// Solidity: function batchOwner(bytes32 _batchId) view returns(address)
+func (_Postagestamp *PostagestampCallerSession) BatchOwner(_batchId [32]byte) (common.Address, error) {
+	return _Postagestamp.Contract.BatchOwner(&_Postagestamp.CallOpts, _batchId)
+}
+
 // Batches is a free data retrieval call binding the contract method 0xc81e25ab.
 //
-// Solidity: function batches(bytes32 ) view returns(address owner, uint8 depth, bool immutableFlag, uint256 normalisedBalance)
+// Solidity: function batches(bytes32 ) view returns(address owner, uint8 depth, uint8 bucketDepth, bool immutableFlag, uint256 normalisedBalance, uint256 lastUpdatedBlockNumber)
 func (_Postagestamp *PostagestampCaller) Batches(opts *bind.CallOpts, arg0 [32]byte) (struct {
-	Owner             common.Address
-	Depth             uint8
-	ImmutableFlag     bool
-	NormalisedBalance *big.Int
+	Owner                  common.Address
+	Depth                  uint8
+	BucketDepth            uint8
+	ImmutableFlag          bool
+	NormalisedBalance      *big.Int
+	LastUpdatedBlockNumber *big.Int
 }, error) {
 	var out []interface{}
 	err := _Postagestamp.contract.Call(opts, &out, "batches", arg0)
 
 	outstruct := new(struct {
-		Owner             common.Address
-		Depth             uint8
-		ImmutableFlag     bool
-		NormalisedBalance *big.Int
+		Owner                  common.Address
+		Depth                  uint8
+		BucketDepth            uint8
+		ImmutableFlag          bool
+		NormalisedBalance      *big.Int
+		LastUpdatedBlockNumber *big.Int
 	})
 	if err != nil {
 		return *outstruct, err
@@ -327,8 +518,10 @@ func (_Postagestamp *PostagestampCaller) Batches(opts *bind.CallOpts, arg0 [32]b
 
 	outstruct.Owner = *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
 	outstruct.Depth = *abi.ConvertType(out[1], new(uint8)).(*uint8)
-	outstruct.ImmutableFlag = *abi.ConvertType(out[2], new(bool)).(*bool)
-	outstruct.NormalisedBalance = *abi.ConvertType(out[3], new(*big.Int)).(**big.Int)
+	outstruct.BucketDepth = *abi.ConvertType(out[2], new(uint8)).(*uint8)
+	outstruct.ImmutableFlag = *abi.ConvertType(out[3], new(bool)).(*bool)
+	outstruct.NormalisedBalance = *abi.ConvertType(out[4], new(*big.Int)).(**big.Int)
+	outstruct.LastUpdatedBlockNumber = *abi.ConvertType(out[5], new(*big.Int)).(**big.Int)
 
 	return *outstruct, err
 
@@ -336,24 +529,28 @@ func (_Postagestamp *PostagestampCaller) Batches(opts *bind.CallOpts, arg0 [32]b
 
 // Batches is a free data retrieval call binding the contract method 0xc81e25ab.
 //
-// Solidity: function batches(bytes32 ) view returns(address owner, uint8 depth, bool immutableFlag, uint256 normalisedBalance)
+// Solidity: function batches(bytes32 ) view returns(address owner, uint8 depth, uint8 bucketDepth, bool immutableFlag, uint256 normalisedBalance, uint256 lastUpdatedBlockNumber)
 func (_Postagestamp *PostagestampSession) Batches(arg0 [32]byte) (struct {
-	Owner             common.Address
-	Depth             uint8
-	ImmutableFlag     bool
-	NormalisedBalance *big.Int
+	Owner                  common.Address
+	Depth                  uint8
+	BucketDepth            uint8
+	ImmutableFlag          bool
+	NormalisedBalance      *big.Int
+	LastUpdatedBlockNumber *big.Int
 }, error) {
 	return _Postagestamp.Contract.Batches(&_Postagestamp.CallOpts, arg0)
 }
 
 // Batches is a free data retrieval call binding the contract method 0xc81e25ab.
 //
-// Solidity: function batches(bytes32 ) view returns(address owner, uint8 depth, bool immutableFlag, uint256 normalisedBalance)
+// Solidity: function batches(bytes32 ) view returns(address owner, uint8 depth, uint8 bucketDepth, bool immutableFlag, uint256 normalisedBalance, uint256 lastUpdatedBlockNumber)
 func (_Postagestamp *PostagestampCallerSession) Batches(arg0 [32]byte) (struct {
-	Owner             common.Address
-	Depth             uint8
-	ImmutableFlag     bool
-	NormalisedBalance *big.Int
+	Owner                  common.Address
+	Depth                  uint8
+	BucketDepth            uint8
+	ImmutableFlag          bool
+	NormalisedBalance      *big.Int
+	LastUpdatedBlockNumber *big.Int
 }, error) {
 	return _Postagestamp.Contract.Batches(&_Postagestamp.CallOpts, arg0)
 }
@@ -418,37 +615,6 @@ func (_Postagestamp *PostagestampSession) CurrentTotalOutPayment() (*big.Int, er
 // Solidity: function currentTotalOutPayment() view returns(uint256)
 func (_Postagestamp *PostagestampCallerSession) CurrentTotalOutPayment() (*big.Int, error) {
 	return _Postagestamp.Contract.CurrentTotalOutPayment(&_Postagestamp.CallOpts)
-}
-
-// Empty is a free data retrieval call binding the contract method 0xf2a75fe4.
-//
-// Solidity: function empty() view returns(bool)
-func (_Postagestamp *PostagestampCaller) Empty(opts *bind.CallOpts) (bool, error) {
-	var out []interface{}
-	err := _Postagestamp.contract.Call(opts, &out, "empty")
-
-	if err != nil {
-		return *new(bool), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-
-	return out0, err
-
-}
-
-// Empty is a free data retrieval call binding the contract method 0xf2a75fe4.
-//
-// Solidity: function empty() view returns(bool)
-func (_Postagestamp *PostagestampSession) Empty() (bool, error) {
-	return _Postagestamp.Contract.Empty(&_Postagestamp.CallOpts)
-}
-
-// Empty is a free data retrieval call binding the contract method 0xf2a75fe4.
-//
-// Solidity: function empty() view returns(bool)
-func (_Postagestamp *PostagestampCallerSession) Empty() (bool, error) {
-	return _Postagestamp.Contract.Empty(&_Postagestamp.CallOpts)
 }
 
 // ExpiredBatchesExist is a free data retrieval call binding the contract method 0x711bfa2b.
@@ -575,6 +741,37 @@ func (_Postagestamp *PostagestampCallerSession) HasRole(role [32]byte, account c
 	return _Postagestamp.Contract.HasRole(&_Postagestamp.CallOpts, role, account)
 }
 
+// IsBatchesTreeEmpty is a free data retrieval call binding the contract method 0x1889b99b.
+//
+// Solidity: function isBatchesTreeEmpty() view returns(bool)
+func (_Postagestamp *PostagestampCaller) IsBatchesTreeEmpty(opts *bind.CallOpts) (bool, error) {
+	var out []interface{}
+	err := _Postagestamp.contract.Call(opts, &out, "isBatchesTreeEmpty")
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
+}
+
+// IsBatchesTreeEmpty is a free data retrieval call binding the contract method 0x1889b99b.
+//
+// Solidity: function isBatchesTreeEmpty() view returns(bool)
+func (_Postagestamp *PostagestampSession) IsBatchesTreeEmpty() (bool, error) {
+	return _Postagestamp.Contract.IsBatchesTreeEmpty(&_Postagestamp.CallOpts)
+}
+
+// IsBatchesTreeEmpty is a free data retrieval call binding the contract method 0x1889b99b.
+//
+// Solidity: function isBatchesTreeEmpty() view returns(bool)
+func (_Postagestamp *PostagestampCallerSession) IsBatchesTreeEmpty() (bool, error) {
+	return _Postagestamp.Contract.IsBatchesTreeEmpty(&_Postagestamp.CallOpts)
+}
+
 // LastExpiryBalance is a free data retrieval call binding the contract method 0xea612e1f.
 //
 // Solidity: function lastExpiryBalance() view returns(uint256)
@@ -697,6 +894,68 @@ func (_Postagestamp *PostagestampSession) MinimumBucketDepth() (uint8, error) {
 // Solidity: function minimumBucketDepth() view returns(uint8)
 func (_Postagestamp *PostagestampCallerSession) MinimumBucketDepth() (uint8, error) {
 	return _Postagestamp.Contract.MinimumBucketDepth(&_Postagestamp.CallOpts)
+}
+
+// MinimumInitialBalancePerChunk is a free data retrieval call binding the contract method 0x90697842.
+//
+// Solidity: function minimumInitialBalancePerChunk() view returns(uint256)
+func (_Postagestamp *PostagestampCaller) MinimumInitialBalancePerChunk(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _Postagestamp.contract.Call(opts, &out, "minimumInitialBalancePerChunk")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// MinimumInitialBalancePerChunk is a free data retrieval call binding the contract method 0x90697842.
+//
+// Solidity: function minimumInitialBalancePerChunk() view returns(uint256)
+func (_Postagestamp *PostagestampSession) MinimumInitialBalancePerChunk() (*big.Int, error) {
+	return _Postagestamp.Contract.MinimumInitialBalancePerChunk(&_Postagestamp.CallOpts)
+}
+
+// MinimumInitialBalancePerChunk is a free data retrieval call binding the contract method 0x90697842.
+//
+// Solidity: function minimumInitialBalancePerChunk() view returns(uint256)
+func (_Postagestamp *PostagestampCallerSession) MinimumInitialBalancePerChunk() (*big.Int, error) {
+	return _Postagestamp.Contract.MinimumInitialBalancePerChunk(&_Postagestamp.CallOpts)
+}
+
+// MinimumValidityBlocks is a free data retrieval call binding the contract method 0xdd483cfb.
+//
+// Solidity: function minimumValidityBlocks() view returns(uint256)
+func (_Postagestamp *PostagestampCaller) MinimumValidityBlocks(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _Postagestamp.contract.Call(opts, &out, "minimumValidityBlocks")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// MinimumValidityBlocks is a free data retrieval call binding the contract method 0xdd483cfb.
+//
+// Solidity: function minimumValidityBlocks() view returns(uint256)
+func (_Postagestamp *PostagestampSession) MinimumValidityBlocks() (*big.Int, error) {
+	return _Postagestamp.Contract.MinimumValidityBlocks(&_Postagestamp.CallOpts)
+}
+
+// MinimumValidityBlocks is a free data retrieval call binding the contract method 0xdd483cfb.
+//
+// Solidity: function minimumValidityBlocks() view returns(uint256)
+func (_Postagestamp *PostagestampCallerSession) MinimumValidityBlocks() (*big.Int, error) {
+	return _Postagestamp.Contract.MinimumValidityBlocks(&_Postagestamp.CallOpts)
 }
 
 // Paused is a free data retrieval call binding the contract method 0x5c975abb.
@@ -1022,6 +1281,27 @@ func (_Postagestamp *PostagestampTransactorSession) RevokeRole(role [32]byte, ac
 	return _Postagestamp.Contract.RevokeRole(&_Postagestamp.TransactOpts, role, account)
 }
 
+// SetMinimumValidityBlocks is a paid mutator transaction binding the contract method 0x48652ce7.
+//
+// Solidity: function setMinimumValidityBlocks(uint256 _value) returns()
+func (_Postagestamp *PostagestampTransactor) SetMinimumValidityBlocks(opts *bind.TransactOpts, _value *big.Int) (*types.Transaction, error) {
+	return _Postagestamp.contract.Transact(opts, "setMinimumValidityBlocks", _value)
+}
+
+// SetMinimumValidityBlocks is a paid mutator transaction binding the contract method 0x48652ce7.
+//
+// Solidity: function setMinimumValidityBlocks(uint256 _value) returns()
+func (_Postagestamp *PostagestampSession) SetMinimumValidityBlocks(_value *big.Int) (*types.Transaction, error) {
+	return _Postagestamp.Contract.SetMinimumValidityBlocks(&_Postagestamp.TransactOpts, _value)
+}
+
+// SetMinimumValidityBlocks is a paid mutator transaction binding the contract method 0x48652ce7.
+//
+// Solidity: function setMinimumValidityBlocks(uint256 _value) returns()
+func (_Postagestamp *PostagestampTransactorSession) SetMinimumValidityBlocks(_value *big.Int) (*types.Transaction, error) {
+	return _Postagestamp.Contract.SetMinimumValidityBlocks(&_Postagestamp.TransactOpts, _value)
+}
+
 // SetPrice is a paid mutator transaction binding the contract method 0x91b7f5ed.
 //
 // Solidity: function setPrice(uint256 _price) returns()
@@ -1062,27 +1342,6 @@ func (_Postagestamp *PostagestampSession) TopUp(_batchId [32]byte, _topupAmountP
 // Solidity: function topUp(bytes32 _batchId, uint256 _topupAmountPerChunk) returns()
 func (_Postagestamp *PostagestampTransactorSession) TopUp(_batchId [32]byte, _topupAmountPerChunk *big.Int) (*types.Transaction, error) {
 	return _Postagestamp.Contract.TopUp(&_Postagestamp.TransactOpts, _batchId, _topupAmountPerChunk)
-}
-
-// TopupPot is a paid mutator transaction binding the contract method 0x99176447.
-//
-// Solidity: function topupPot(uint256 amount) returns()
-func (_Postagestamp *PostagestampTransactor) TopupPot(opts *bind.TransactOpts, amount *big.Int) (*types.Transaction, error) {
-	return _Postagestamp.contract.Transact(opts, "topupPot", amount)
-}
-
-// TopupPot is a paid mutator transaction binding the contract method 0x99176447.
-//
-// Solidity: function topupPot(uint256 amount) returns()
-func (_Postagestamp *PostagestampSession) TopupPot(amount *big.Int) (*types.Transaction, error) {
-	return _Postagestamp.Contract.TopupPot(&_Postagestamp.TransactOpts, amount)
-}
-
-// TopupPot is a paid mutator transaction binding the contract method 0x99176447.
-//
-// Solidity: function topupPot(uint256 amount) returns()
-func (_Postagestamp *PostagestampTransactorSession) TopupPot(amount *big.Int) (*types.Transaction, error) {
-	return _Postagestamp.Contract.TopupPot(&_Postagestamp.TransactOpts, amount)
 }
 
 // TotalPot is a paid mutator transaction binding the contract method 0x24b570a9.
@@ -1718,6 +1977,141 @@ func (_Postagestamp *PostagestampFilterer) WatchPaused(opts *bind.WatchOpts, sin
 func (_Postagestamp *PostagestampFilterer) ParsePaused(log types.Log) (*PostagestampPaused, error) {
 	event := new(PostagestampPaused)
 	if err := _Postagestamp.contract.UnpackLog(event, "Paused", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// PostagestampPotWithdrawnIterator is returned from FilterPotWithdrawn and is used to iterate over the raw logs and unpacked data for PotWithdrawn events raised by the Postagestamp contract.
+type PostagestampPotWithdrawnIterator struct {
+	Event *PostagestampPotWithdrawn // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *PostagestampPotWithdrawnIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(PostagestampPotWithdrawn)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(PostagestampPotWithdrawn)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *PostagestampPotWithdrawnIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *PostagestampPotWithdrawnIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// PostagestampPotWithdrawn represents a PotWithdrawn event raised by the Postagestamp contract.
+type PostagestampPotWithdrawn struct {
+	Recipient   common.Address
+	TotalAmount *big.Int
+	Raw         types.Log // Blockchain specific contextual infos
+}
+
+// FilterPotWithdrawn is a free log retrieval operation binding the contract event 0xf5d8f9b1e7af440e1e7915f4693ccc004d1461a7dafd17ea7347d03decf298e1.
+//
+// Solidity: event PotWithdrawn(address recipient, uint256 totalAmount)
+func (_Postagestamp *PostagestampFilterer) FilterPotWithdrawn(opts *bind.FilterOpts) (*PostagestampPotWithdrawnIterator, error) {
+
+	logs, sub, err := _Postagestamp.contract.FilterLogs(opts, "PotWithdrawn")
+	if err != nil {
+		return nil, err
+	}
+	return &PostagestampPotWithdrawnIterator{contract: _Postagestamp.contract, event: "PotWithdrawn", logs: logs, sub: sub}, nil
+}
+
+// WatchPotWithdrawn is a free log subscription operation binding the contract event 0xf5d8f9b1e7af440e1e7915f4693ccc004d1461a7dafd17ea7347d03decf298e1.
+//
+// Solidity: event PotWithdrawn(address recipient, uint256 totalAmount)
+func (_Postagestamp *PostagestampFilterer) WatchPotWithdrawn(opts *bind.WatchOpts, sink chan<- *PostagestampPotWithdrawn) (event.Subscription, error) {
+
+	logs, sub, err := _Postagestamp.contract.WatchLogs(opts, "PotWithdrawn")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(PostagestampPotWithdrawn)
+				if err := _Postagestamp.contract.UnpackLog(event, "PotWithdrawn", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParsePotWithdrawn is a log parse operation binding the contract event 0xf5d8f9b1e7af440e1e7915f4693ccc004d1461a7dafd17ea7347d03decf298e1.
+//
+// Solidity: event PotWithdrawn(address recipient, uint256 totalAmount)
+func (_Postagestamp *PostagestampFilterer) ParsePotWithdrawn(log types.Log) (*PostagestampPotWithdrawn, error) {
+	event := new(PostagestampPotWithdrawn)
+	if err := _Postagestamp.contract.UnpackLog(event, "PotWithdrawn", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log

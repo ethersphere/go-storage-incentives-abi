@@ -26,7 +26,7 @@ func main() {
 
 	mustWrite("testnet", "staking", abi.TestnetStakingABI)
 	mustWrite("testnet", "redistribution", abi.TestnetRedistributionABI)
-	mustWrite("testnet", "postageStamp", abi.TestnetPostageStampStampABI)
+	mustWrite("testnet", "postageStamp", abi.TestnetPostageStampABI)
 	mustWrite("testnet", "priceOracle", abi.MainnetPriceOracleABI)
 }
 
